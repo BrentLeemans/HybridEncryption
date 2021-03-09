@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="navbar-nav" *ngIf="isAuthenticated">
+    <a class="nav-item nav-link" routerLink="/inbox" routerLinkActive="active"
+      >Inbox</a
+    >
+    <a class="nav-item nav-link" routerLink="/send" routerLinkActive="active"
+      >Send</a
+    >
+    <a class="nav-item nav-link" routerLink="/logout" routerLinkActive="active"
+      >Logout</a
+    >
+  </div>
+
+  <div class="navbar-nav" *ngIf="!isAuthenticated">
+    <a class="nav-item nav-link" routerLink="/login" routerLinkActive="active"
+      >Login</a
+    >
+    <a
+      class="nav-item nav-link"
+      routerLink="/register"
+      routerLinkActive="active"
+      >Register</a
+    >
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+<!--This will make a SPA (Single page application) There are no refreshes. Everything is on a single page.
+Routes clear the page and simply put other content in the html body-->

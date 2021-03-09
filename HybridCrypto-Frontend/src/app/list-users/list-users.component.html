@@ -1,0 +1,8 @@
+<select class="form-control mb-md-5">
+  <option
+    *ngFor="let user of this.users"
+    (click)="selectUser(user.id)"
+    value="{{ user.id }}"
+    >{{ user.nickname }} - {{ user.email }}</option
+  >
+</select>

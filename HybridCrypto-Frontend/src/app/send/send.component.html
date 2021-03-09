@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <h1 class="mt-5 m-5">Hybrid Crypto</h1>
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{errorMessage}}
+      </div>
+      <div *ngIf="messageGotSent" class="alert alert-success">
+        Your message has successfully been sent!
+      </div>
+      <div *ngIf="!isTextFile && !messageGotSent" class="alert alert-danger">
+        You can only upload text files!
+      </div>
+      <form [formGroup]="sendingForm" (ngSubmit)="send()">
+        <div class="row">
+          <div class="col text-left">
+            <h2>Receiver:</h2>
+          </div>
+          <div class="col">
+            <app-list-users></app-list-users>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col text-md-center">
+            <h2>Message</h2>
+          </div>
+          <textarea
+            class="form-control rounded-0"
+            rows="10"
+            autocomplete="off"
+            formControlName="text"
+          ></textarea>
+        </div>
+
+        <div class="row mt-1">
+          <div class="form-group">
+            <input id="fileUpload" type="file" class="form-control-file" accept=".txt"/>
+          </div>
+        </div>
+        <div class="row float-right">
+          <button
+            type="submit"
+            class="btn-lg btn-primary active mt-5"
+            data-toggle="button"
+          >
+            Send
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

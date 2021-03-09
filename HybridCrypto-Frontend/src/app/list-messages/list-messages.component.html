@@ -1,0 +1,47 @@
+<div *ngFor="let message of messages?.reverse(); let i = index">
+  <div class="container mb-5 d-inline-block" *ngIf="message.file === null && message.text === null">
+    <div class="row">
+      <div class="col text-left">
+        <h3>Message {{ messages.length - i }}</h3>
+      </div>
+      <div class="col text-right">
+        <h3>{{ changeDate(message.date) | date: "MM/dd/yyyy - HH:mm:ss" }}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <textarea
+        class="form-control rounded-0"
+        rows="10"
+        readonly
+      >Met dit bericht ging iets mis!</textarea>
+    </div>
+  </div>
+
+  <div *ngIf="message.file !== null && message.text !== null" class="container mb-5 d-inline-block">
+    <div class="row">
+      <div class="col text-left">
+        <h3>Message {{ messages.length - i }}</h3>
+      </div>
+      <div class="col text-right">
+        <h3>{{ changeDate(message.date) | date: "MM/dd/yyyy - HH:mm:ss" }}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <textarea
+        id="message"
+        class="form-control rounded-0"
+        rows="10"
+        readonly
+      >{{ message.text }}</textarea>
+    </div>
+    <div class="row float-right">
+      <a
+        *ngIf="message.file"
+        class="btn-lg hasfile btn-primary active mt-1"
+        type="button"
+        download="secretFile"
+        (click)="createLink(message.file)"
+      >Download file</a>
+    </div>
+  </div>
+</div>
